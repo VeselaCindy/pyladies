@@ -1,5 +1,5 @@
 speed = float(input("Zadejte rychlost Vaší chůze: "))
-weight = input("Zadejte váhu ulovené ryby (v gramech): ")
+weight = int(input("Zadejte váhu ulovené ryby (v gramech): "))
 antennae = int(input("Zadejte počet tykadel: "))
 temp = float(input("Zadejte teplotu vody: "))
 distance = float(input("Zadejte vzdálenost od rovníku: "))
