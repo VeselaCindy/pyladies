@@ -3,7 +3,9 @@ from turtle import shape, speed, forward, left, right, exitonclick, setx
 # 5:
 shape("turtle")
 speed(10)
+penup()
 setx(-300)
+pendown()
 
 for i in range(10):
     left(45)
