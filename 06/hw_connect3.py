@@ -1,3 +1,6 @@
+import random
+
+
 def evaluate(line):
     if 'xxx' in line:
         return 'x'
@@ -35,4 +38,16 @@ def move_gamer(line):
             print('Input value, please.. try again..')
 
 
-print(move_gamer('xxxx-'))
+# print(move_gamer('xxxx-'))
+
+
+def move_pc(line):
+    position = random.randint(0, len(line) - 1)
+    if line[position] == '-':
+        symbol = random.choice(['x', 'o'])
+        return move(line, position, symbol)
+    else:
+        return move_pc(line)
+
+
+
