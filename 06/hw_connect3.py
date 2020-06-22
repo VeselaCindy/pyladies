@@ -10,7 +10,7 @@ def evaluate(line):
         print('You are lost.')
         return 'o'
     elif '-' not in line:
-        print('Draw.3')
+        print('Draw')
         return '!'
     else:
         return '-'
@@ -39,6 +39,8 @@ def move_pc(line):
     position = random.randint(0, len(line) - 1)
     if line[position] == '-':
         return move(line, position, 'o')
+    elif not line.__contains__('-'):
+        print("Game over. Draw.")
     else:
         return move_pc(line)
 
