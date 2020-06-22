@@ -4,7 +4,7 @@ def get_num(rc):
 
 def check_format(rc):
     if '/' not in rc or len(rc) != 11:
-        return Exception('Wrong format. The length must be 11.')
+        return False
     if rc[6] != '/':
         print('Wrong position of char: /')
         return False
@@ -33,11 +33,11 @@ def divisibility(rc):
 
 
 def get_birthday(rc):
-    year_rc = rc[0:2]
-    if int(year_rc) < 54:
-        year = int('20' + year_rc)
+    year_rc = int(rc[0:2])
+    if year_rc < 54:
+        year = 2000 + year_rc
     else:
-        year = int('19' + year_rc)
+        year = 1900 + year_rc
     month = int(rc[2:4])
     if month > 50:
         month -= 50
@@ -53,14 +53,11 @@ def get_sex(rc):
         return 'Male'
 
 
-def check_rc():
-    rc = input('Input your RC: ')
-    if not check_format(rc) or not check_dates(rc) or not divisibility(rc):
-        return False
+if __name__ == "__main__":
+    your_rc = input('Input your RC: ')
+    if check_format(your_rc) and check_dates(your_rc) and divisibility(your_rc):
+        get_birthday(your_rc)
+        print(get_sex(your_rc))
+        print("RC is OK.")
     else:
-        get_birthday(rc)
-        print(get_sex(rc))
-        return True
-
-
-check_rc()
+        print("Wrong RC.")
