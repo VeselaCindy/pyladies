@@ -42,8 +42,7 @@ def get_birthday(rc):
     if month > 50:
         month -= 50
     day = int(rc[4:6])
-    print("Date of birth: {}.{}.{}".format(day, month, year))
-    return day, month, year
+    return "Date of birth: {}.{}.{}".format(day, month, year)
 
 
 def get_sex(rc):
@@ -56,7 +55,7 @@ def get_sex(rc):
 if __name__ == "__main__":
     your_rc = input('Input your RC: ')
     if check_format(your_rc) and check_dates(your_rc) and divisibility(your_rc):
-        get_birthday(your_rc)
+        print(get_birthday(your_rc))
         print(get_sex(your_rc))
         print("RC is OK.")
     else:
