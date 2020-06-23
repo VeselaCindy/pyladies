@@ -1,5 +1,4 @@
 import random
-import numpy as np
 
 
 # task 8
@@ -19,7 +18,8 @@ def game():
     for i in range(4):
         gamers.append(roll_until_six())
     print('Count of rolls: ', gamers)
-    winner = np.where(gamers == np.amax(gamers))[0][0] + 1
+    m = max(gamers)
+    winner = [i for i, j in enumerate(gamers) if j == m][0] + 1
     print('Winner is gamer number', winner)
 
 
