@@ -28,4 +28,16 @@ def test_move_wrong_input():
 
 
 def test_move_pc():
-    assert move_pc('---')
+    res = move_pc('---', 'x')
+    assert res.count('x') == 1
+    assert res.count('o') == 0
+    assert res.count('-') == 2
+    assert len(res) == 3
+
+
+def test_move_pc_long_line():
+    res = move_pc('--------------------------------------------', 'x')
+    assert res.count('x') == 1
+    assert res.count('o') == 0
+    assert res.count('-') == 43
+    assert len(res) == 44

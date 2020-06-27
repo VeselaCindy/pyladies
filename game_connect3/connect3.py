@@ -40,9 +40,13 @@ def choose_symbol():
 def connect_1d():
     line = 19 * '-'
     user_symbol = choose_symbol()
+    if user_symbol == 'o':
+        pc_symbol = 'x'
+    else:
+        pc_symbol = 'o'
     while evaluate(line) == '-':
         line = move_gamer(line, symbol=user_symbol)
-        line = move_pc(line, '')
+        line = move_pc(line, symbol=pc_symbol)
 
 
 if __name__ == "__main__":
