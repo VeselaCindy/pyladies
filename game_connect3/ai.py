@@ -9,4 +9,4 @@ def move_pc(line, symbol):
     elif not line.__contains__('-'):
         print("Game over. Draw.")
     else:
-        return move_pc(line)
+        return move_pc(line, symbol)

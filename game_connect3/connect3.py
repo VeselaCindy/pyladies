@@ -2,12 +2,12 @@ from utils import move
 from ai import move_pc
 
 
-def evaluate(line):
+def evaluate(line, user_symbol, pc_symbol):
     print("Current state:", line)
-    if 'xxx' in line:
+    if ('xxx' in line and user_symbol == 'x') or ('ooo' in line and user_symbol == 'o'):
         print('You are a winner! Congratulation.')
         return 'x'
-    elif 'ooo' in line:
+    elif ('ooo' in line and pc_symbol == 'o') or ('xxx' in line and pc_symbol == 'x'):
         print('You are lost.')
         return 'o'
     elif '-' not in line:
@@ -44,7 +44,7 @@ def connect_1d():
         pc_symbol = 'x'
     else:
         pc_symbol = 'o'
-    while evaluate(line) == '-':
+    while evaluate(line, user_symbol, pc_symbol) == '-':
         line = move_gamer(line, symbol=user_symbol)
         line = move_pc(line, symbol=pc_symbol)
 
