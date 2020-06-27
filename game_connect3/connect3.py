@@ -2,7 +2,7 @@ from utils import move
 from ai import move_pc
 
 
-def evaluate(line, user_symbol, pc_symbol):
+def evaluate(line, user_symbol='x', pc_symbol='o'):
     print("Current state:", line)
     if ('xxx' in line and user_symbol == 'x') or ('ooo' in line and user_symbol == 'o'):
         print('You are a winner! Congratulation.')

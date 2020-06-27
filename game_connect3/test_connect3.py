@@ -41,3 +41,13 @@ def test_move_pc_long_line():
     assert res.count('o') == 0
     assert res.count('-') == 43
     assert len(res) == 44
+
+
+def test_move_pc_full_line():
+    res = move_pc('xxoxoxoxoxo', 'x')
+    assert res == 'Game over'
+
+
+def test_move_pc_no_line():
+    with pytest.raises(ValueError):
+        move_pc('', 'x')
