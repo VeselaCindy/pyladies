@@ -1,11 +1,11 @@
 import random
-from game_connect3.utils import move
+from utils import move
 
 
-def move_pc(line):
+def move_pc(line, symbol):
     position = random.randint(0, len(line) - 1)
     if line[position] == '-':
-        return move(line, position, 'o')
+        return move(line, position, symbol)
     elif not line.__contains__('-'):
         print("Game over. Draw.")
     else:
