@@ -2,7 +2,7 @@ import random
 from utils import move
 
 
-def put_symbol_next_to_substring(line, substring, input_symbol):
+def put_symbol_next_to_substring(line, substring):
     xx_positions = [i for i in range(len(line)) if line.startswith(substring, i)]
     for possibility in xx_positions:
         if possibility > 0 and line[possibility - 1] == '-':
@@ -34,11 +34,11 @@ def move_pc(line, symbol):
         elif symbol not in line:
             return random_move(line, symbol)
         elif symbol * 2 in line:
-            position = put_symbol_next_to_substring(line, substring=symbol * 2, input_symbol=symbol)
+            position = put_symbol_next_to_substring(line, substring=symbol * 2)
             if position is None:
-                position = put_symbol_next_to_substring(line, substring=symbol, input_symbol=symbol)
+                position = put_symbol_next_to_substring(line, substring=symbol)
         else:
-            position = put_symbol_next_to_substring(line, substring=symbol, input_symbol=symbol)
+            position = put_symbol_next_to_substring(line, substring=symbol)
     if position is not None:
         return move(line, position, symbol)
     else:
