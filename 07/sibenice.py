@@ -4,16 +4,6 @@ from sibenice_outputs import image, count
 list_of_words = ['dog', 'friend', 'cream', 'chocolate', 'success']
 
 
-def put_symbol_next_to_substring(line, substring):
-    xx_positions = [i for i in range(len(line)) if line.startswith(substring, i)]
-    for possibility in xx_positions:
-        if possibility > 0 and line[possibility - 1] == '-':
-            return possibility - 1
-        elif possibility < len(line) - len(substring) and line[possibility + len(substring)] == '-':
-            return possibility + len(substring)
-    return None
-
-
 def change_symbol(text, position, symbol):
     text = list(text)
     text[position] = symbol
