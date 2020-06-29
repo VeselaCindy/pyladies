@@ -22,7 +22,7 @@ def move(word, current):
         return current, False
 
 
-if __name__ == '__main__':
+def game():
     word = random.choice(list_of_words)
     current_state = '_' * len(word)
     count_of_failure = 0
@@ -38,3 +38,11 @@ if __name__ == '__main__':
         print(current_state)
     if current_state == word:
         print('Congratulation.')
+
+
+if __name__ == '__main__':
+    while True:
+        game()
+        repeat = input('Do you want to repeat the game? yes/no? ')
+        if repeat != 'yes':
+            break
