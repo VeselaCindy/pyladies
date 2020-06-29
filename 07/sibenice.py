@@ -12,11 +12,13 @@ def change_symbol(text, position, symbol):
 
 def move(word, current):
     char = input('Input character: ')
-    if len(char) > 0 and char in word:
+    if 0 < len(char) < 2 and char in word:
         positions = [i for i in range(len(word)) if word.startswith(char, i)]
         for i in positions:
             if word.startswith(char, i):
                 current = change_symbol(current, i, char)
+        return current, True
+    elif not char.isalpha() or len(char) > 1:
         return current, True
     else:
         return current, False
