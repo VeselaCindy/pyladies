@@ -20,8 +20,15 @@ def check_format(rc):
 
 
 def check_dates(rc):
-    if int(rc[2:4]) > 62 or int(rc[4:6]) > 31:
-        print('Wrong date.')
+    date = rc[:6]
+    if int(date[2]) >= 5:
+        date = list(date)
+        date[2] = str(int(date[2]) - 5)
+        date = ''.join(date)
+    try:
+        datetime.strptime(date, '%y%m%d')
+    except ValueError:
+        print('Wrong dateformat')
         return False
     else:
         return True
