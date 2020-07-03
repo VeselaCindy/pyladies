@@ -1,26 +1,38 @@
+from datetime import datetime
+
+
 def get_num(rc):
     return int(''.join(x for x in rc if x.isdigit()))
 
 
 def check_format(rc):
     if '/' not in rc or len(rc) != 11:
-        raise Exception('Wrong format, length of number must be 11 and symbol / is expected.')
+        return False
     if rc[6] != '/':
-        raise Exception('Wrong position of char: /')
+        print('Wrong position of char: /')
+        return False
     rc = rc[:6] + rc[7:]
     for char in rc:
         if not char.isnumeric():
-            raise Exception('Only numbers and / are expected.')
+            print('Only numbers are expected.')
+            return False
+    return True
 
 
 def check_dates(rc):
     if int(rc[2:4]) > 62 or int(rc[4:6]) > 31:
-        raise Exception('Wrong date.')
+        print('Wrong date.')
+        return False
+    else:
+        return True
 
 
 def divisibility(rc):
-    if get_num(rc) % 11 != 0:
-        raise Exception('RC is not divisible by 11.')
+    if get_num(rc) % 11 == 0:
+        return True
+    else:
+        print('RC is not divisible by 11.')
+        return False
 
 
 def get_birthday(rc):
@@ -45,13 +57,9 @@ def get_sex(rc):
 
 if __name__ == "__main__":
     your_rc = input('Input your RC: ')
-    try:
-        check_format(your_rc)
-        check_dates(your_rc)
-        divisibility(your_rc)
-    except ValueError:
-        print('Wrong RC.')
-    else:
+    if check_format(your_rc) and check_dates(your_rc) and divisibility(your_rc):
         print(get_birthday(your_rc))
         print(get_sex(your_rc))
         print("RC is OK.")
+    else:
+        print("Wrong RC.")
