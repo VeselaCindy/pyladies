@@ -2,7 +2,11 @@ from datetime import datetime
 
 
 def get_num(rc):
-    return int(''.join(x for x in rc if x.isdigit()))
+    try:
+        return int(''.join(x for x in rc if x.isdigit()))
+    except ValueError:
+        print('No numbers in the argument.')
+        return None
 
 
 def check_format(rc):
@@ -52,7 +56,7 @@ def get_birthday(rc):
     if month > 50:
         month -= 50
     day = int(rc[4:6])
-    return "Date of birth: {}.{}.{}".format(day, month, year)
+    return 'Date of birth: {}.{}.{}'.format(day, month, year)
 
 
 def get_sex(rc):
