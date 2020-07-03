@@ -6,12 +6,14 @@ list_of_words = ['dog', 'friend', 'cream', 'chocolate', 'success']
 
 def change_symbol(text, position, symbol):
     text = list(text)
-    text[position] = symbol
+    try:
+        text[position] = symbol
+    except IndexError:
+        print('Index out of string, no symbol was changed.')
     return ''.join(text)
 
 
-def move(word, current):
-    char = input('Input character: ')
+def move(char, word, current):
     if 0 < len(char) < 2 and char in word:
         positions = [i for i in range(len(word)) if word.startswith(char, i)]
         for i in positions:
@@ -30,7 +32,8 @@ def game():
     count_of_failure = 0
 
     while '_' in current_state:
-        current_state, success = move(word, current_state)
+        char = input('Input character: ')
+        current_state, success = move(char, word, current_state)
         if not success:
             count_of_failure += 1
             print(image(count_of_failure - 1))
