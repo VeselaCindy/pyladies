@@ -1,5 +1,12 @@
+from datetime import datetime
+
+
 def get_num(rc):
-    return int(''.join(x for x in rc if x.isdigit()))
+    try:
+        return int(''.join(x for x in rc if x.isdigit()))
+    except ValueError:
+        print('No numbers in the argument.')
+        return None
 
 
 def check_format(rc):
@@ -17,8 +24,15 @@ def check_format(rc):
 
 
 def check_dates(rc):
-    if int(rc[2:4]) > 62 or int(rc[4:6]) > 31:
-        print('Wrong date.')
+    date = rc[:6]
+    if int(date[2]) >= 5:
+        date = list(date)
+        date[2] = str(int(date[2]) - 5)
+        date = ''.join(date)
+    try:
+        datetime.strptime(date, '%y%m%d')
+    except ValueError:
+        print('Wrong dateformat')
         return False
     else:
         return True
@@ -42,7 +56,7 @@ def get_birthday(rc):
     if month > 50:
         month -= 50
     day = int(rc[4:6])
-    return "Date of birth: {}.{}.{}".format(day, month, year)
+    return 'Date of birth: {}.{}.{}'.format(day, month, year)
 
 
 def get_sex(rc):
